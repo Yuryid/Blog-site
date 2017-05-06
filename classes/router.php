@@ -71,21 +71,27 @@ Class Router {
 	}
 	
 	function start() {
+        //get initial path, have to be index
         $this->getController($file, $controller, $action, $args);
 		
+        //can read check
         if (is_readable($file) == false) {
 			die ('404 Not Found');
         }
 		
+        //controller (index)
         include ($file);
 
+        //create controller obj
         $class = 'Controller_' . $controller;
         $controller = new $class();
 		
+        //check action
         if (is_callable(array($controller, $action)) == false) {
 			die ('404 Not Found');
         }
 
+        //and run it if ok
         $controller->$action();
 	}
 }
