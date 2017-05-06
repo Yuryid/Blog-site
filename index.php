@@ -1,17 +1,39 @@
 <?php
-header ("Content-Type: text/html; charset=utf-8");
-echo "<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv=\"content-type\" content=\"text/html; charset=utf-8\">
-<title>Open Server</title>
-</head>
-<body style=\"background: url(fon.png) top left repeat-x\">
-<center>
-<br><br><br><div style=\"width: 600px;\"><span style=\"font-size: 32px; color: green; font-family: Arial, Verdana; text-shadow: 0 1px 0 #fff\">Добро пожаловать в Open Server!</span>
-<br><br><br><span style=\"font-size: 32px; color: #333; font-family: Verdana, Arial;\">Он работает ;-)</span>
-<br><img src=\"st.png\" style=\"margin: 40px 0\"><br><a href=\"http://open-server.ru/docs/\" style=\"font-size: 24px; color: #048acd; font-family: Arial;\">Руководство пользователя</a></span><br><br><br></div>
-</center>
-</body>
-</html>";
+//reporting all errors
+error_reporting (-1); 
+//config 
+include ('config.php');
+
+//connecting to db
+try {
+	$dbconn = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASS);
+	$dbconn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+	$dbconn->exec('SET CHARACTER SET utf8');
+}
+catch(PDOException $e) {
+    print "DB ERROR: {$e->getMessage()}";
+}
+
+//class autoloader, (all in classes folder now)
+if(!function_exists('classAutoLoader')){
+        function classAutoLoader($className){
+            $filename = strtolower($className) . '.php';
+           	$folder = 'classes';
+           	//full path
+			$fpath = SITE_PATH . $folder . _DS . $filename;
+			if (file_exists($fpath) == false) {
+				return false;
+			}
+            include_once $fpath;
+        }
+}
+spl_autoload_register('classAutoLoader');
+
+//router loading
+$router = new Router();
+//set path where are all controllers
+$router->setPath (SITE_PATH . 'controllers');
+
+//start
+$router->start();	
 ?>
