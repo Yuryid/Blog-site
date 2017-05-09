@@ -32,7 +32,7 @@ spl_autoload_register('classAutoLoader');
 //router loading
 $router = new Router();
 //set path where are all controllers
-$router->setPath (SITE_PATH . 'controllers');
+//$router->setPath (SITE_PATH . 'controllers');
 
 //start
 $router->start();	

@@ -4,24 +4,24 @@
 //directory structure = routes
 Class Router {
 
-	private $path;
-	private $args = array();
+	//private $path;
+	//private $args = array();
 	
 	//?????????? function __construct() {
 	
 	// }
 
 	//set path to folder with controllers
-	function setPath($path) {
-		//correcting d separator
-		$path = rtrim($path, '/\\');
-        $path .= _DS;
-		//exception if path not exist
-        if (is_dir($path) == false) {
-			throw new Exception ('Invalid controller path: `' . $path . '`');
-        }
-        $this->path = $path;
-	}	
+	// function setPath($path) {
+	// 	//correcting d separator
+	// 	$path = rtrim($path, '/\\');
+ //        $path .= _DS;
+	// 	//exception if path not exist
+ //        if (is_dir($path) == false) {
+	// 		throw new Exception ('Invalid controller path: `' . $path . '`');
+ //        }
+ //        $this->path = $path;
+	// }	
 	
 	//get controller and action from url
 	private function getController(&$file, &$controller, &$action, &$args) {
@@ -37,9 +37,11 @@ Class Router {
         $parts = explode('/', $route);
 
         //find controller file and local path
-        $loc_path = $this->path;
+        //$loc_path = $this->path;
+        $loc_path = SITE_PATH . 'controllers' . _DS;
+        //echo $loc_path, ' ';
         foreach ($parts as $part) {
-			$fullpath = $loc_path . $part;//fp/controllers/index
+			$fullpath = $loc_path . $part;//sp/controllers/index
 			//build local path
 			if (is_dir($fullpath)) {
 				$loc_path .= $part . _DS;
@@ -73,7 +75,7 @@ Class Router {
 	function start() {
         //get initial path, have to be index
         $this->getController($file, $controller, $action, $args);
-		
+		echo $file, ' ', $controller,' ', $action,' ', $args;
         //can read check
         if (is_readable($file) == false) {
 			die ('404 Not Found');
