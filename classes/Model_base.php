@@ -62,8 +62,8 @@ Abstract Class Model_Base {
 	}
 	
 	// запись в базу данных
-	// public function save() {
-	// 	$arrayAllFields = array_keys($this->fieldsTable());
+	abstract public function add();
+	//{ 	$arrayAllFields = array_keys($this->fieldsTable());
 	// 	$arraySetFields = array();
 	// 	$arrayData = array();
 	// 	foreach($arrayAllFields as $field){
@@ -201,7 +201,7 @@ Abstract Class Model_Base {
 	}
 	
 	// обновление записи. Происходит по ID
-	abstract public function update();
+	abstract public function update($id);
 	// {
 	// 	$arrayAllFields = array_keys($this->fieldsTable());
 	// 	$arrayForSet = array();
