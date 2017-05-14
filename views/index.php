@@ -1,7 +1,7 @@
 <?php
 	//index view(main page) with list of all articles
 	//page header
-	require('base/header.php');
+	require(HEADER_PATH);
 	?>
 	<!-- title. -->
   <h1> Welcome to blog site, <?php print($login_name); ?>!</h1>
@@ -40,5 +40,5 @@
 
 <?php
 	//footer
-	require('base/footer.php');
+	require(FOOTER_PATH);
 ?>

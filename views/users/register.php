@@ -1,12 +1,13 @@
 <?php
-	//login view with login form
+	//register view with form
 	//page header
-	require('base/header.php');
+  require(HEADER_PATH);
 	?>
 	<!-- title. -->
-  <h1></h1>
+  <h1>Register new user</h1>
+  <div class="login-status"> <?php print $contents['message']; ?> </div>
   <!-- login form -->
- <form action="<?php print _DS . "users". _DS . "login" . _DS . "check"; ?>" method="POST" class="form-login">
+ <form action="<?php print _DS.'users'._DS.'register'._DS.'check'; ?>" method="POST" class="form-login">
     <div class="field-item">
       <label for="name">Login</label>
       <input type="text" name="name" id="name" required>
@@ -14,13 +15,13 @@
 
     <div class="field-item">
       <label for="pass">Password</label>
-      <input type="password" name="pass">
+      <input type="password" name="pass" maxlength="16" minlength="3">
     </div>
 
     <input type="submit" name="submit" value="Send">
   </form>
-  <div class="login-status"> <?php print $contents['message']; ?> </div>
+  
 <?php
 	//footer
-	require('base/footer.php');
+	require(FOOTER_PATH);
 ?>

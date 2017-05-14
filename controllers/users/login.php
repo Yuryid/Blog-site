@@ -6,8 +6,8 @@ Class Controller_Login Extends Controller_Base {
 	public $view_name = "login";
 	
 	function __construct() {
-		//creating proper view class (view_name, controller name)
-		$this->view = new View($this->view_name, 'login');
+		//creating proper view class (view_name, controller prefix)
+		$this->view = new View($this->view_name, 'users' . _DS);
 	}
 
 	//action show login form
@@ -32,7 +32,7 @@ Class Controller_Login Extends Controller_Base {
 				    $_SESSION['login'] = $result[0]['name'];
 				    $_SESSION['admin'] = $result[0]['admin'];
 				    //go to main page
-				    header('Location: /');
+				    header('Location: '._DS);
 				} else {
 					//wrong password
 					$contents['message'] = 'Wrong password.';
@@ -57,7 +57,7 @@ Class Controller_Login Extends Controller_Base {
 		session_destroy();
 
 		//back to main page
-		header('Location: /');
+		header('Location: '._DS);
 		exit;
 	}
 }

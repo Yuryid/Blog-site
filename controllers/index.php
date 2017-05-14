@@ -6,8 +6,8 @@ Class Controller_Index Extends Controller_Base {
 	public $view_name = "index";
 	
 	function __construct() {
-		//creating proper view class (view_name, controller name)
-		$this->view = new View($this->view_name, 'index');
+		//creating proper view class (view_name, controller prefix)
+		$this->view = new View($this->view_name, '');
 	}
 	//action
 	function index() {

@@ -1,5 +1,5 @@
 - 404 Error page
-- add new users
++ add new users
 ? route rules
 - compact list of articles (shortened sql select)
 - add new blog 
@@ -9,3 +9,6 @@
 - show comment on main page 
 - delete comments by admin
 - show list of all users
+- password_hash
+- errors footers
+- eng comments

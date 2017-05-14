@@ -68,16 +68,18 @@ Abstract Class Model_Base {
 		$All_fields_names = $this->fieldsTable();
 		//filling params from class data
 		foreach($All_fields_names as $field){
-			if(!empty($this->$field)){
+			if(isset($this->$field)){
 				$field_names[] = $field;
 				$data[] = $this->$field;
 			}
 		}
 		$fields_q = implode(', ', $field_names);
-		$data_q = "'" . implode("', '", $field_names) . "'";
+		$data_q = "'" . implode("', '", $data) . "'";
+		//echo $fields_q, ' ',$data_q;
 		//querry
 		try {
-		    $stmt = $this->db->prepare('INSERT INTO '. $this->table ."($fields_q) VALUES(NULL, $data_q)");
+			//echo "INSERT INTO $this->table (id, $fields_q) VALUES(NULL, $data_q)";
+		    $stmt = $this->db->prepare("INSERT INTO $this->table (id, $fields_q) VALUES(NULL, $data_q)");
 		    //executing querry
 		    if($stmt->execute()) {
 		    	return true;
