@@ -75,10 +75,9 @@ Class Router {
 	function start() {
         //get initial path, have to be index
         $this->getController($file, $controller, $action, $args);
-		echo $file, ' ', $controller,' ', $action,' ', $args;
         //can read check
         if (is_readable($file) == false) {
-			die ('404 Not Found');
+			die ('404 Not Found controller file '. $file);
         }
 		
         //controller (index)
@@ -90,7 +89,7 @@ Class Router {
 		
         //check action
         if (is_callable(array($controller, $action)) == false) {
-			die ('404 Not Found');
+			die ('404 Not Found action '. $action);
         }
 
         //and run it if ok

@@ -1,0 +1,11 @@
+- 404 Error page
+- add new users
+? route rules
+- compact list of articles (shortened sql select)
+- add new blog 
+- edit blog
+- delete blog
+- make comments
+- show comment on main page 
+- delete comments by admin
+- show list of all users

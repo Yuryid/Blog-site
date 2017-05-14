@@ -18,7 +18,24 @@ catch(PDOException $e) {
 if(!function_exists('classAutoLoader')){
         function classAutoLoader($className){
             $filename = strtolower($className) . '.php';
-           	$folder = 'classes';
+            $tmparr = explode('_', $className);
+            if(empty($tmparr[1]) OR $tmparr[1] == 'Base'){
+           		$folder = 'classes';
+           	}else{			
+				switch(strtolower($tmparr[0])){
+					case 'controller':
+						$folder = 'controllers';	
+						break;
+						
+					case 'model':					
+						$folder = 'models';	
+						break;
+						
+					default:
+						$folder = 'classes';
+						break;
+				}
+			}
            	//full path
 			$fpath = SITE_PATH . $folder . _DS . $filename;
 			if (file_exists($fpath) == false) {

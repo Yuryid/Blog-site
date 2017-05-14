@@ -7,8 +7,10 @@ class Model_articles extends Model_Base {
 	public $short_desc;
 	public $text;
 	public $user_id;
+	public $datastamp;
+	public $allow_comments;
 
-	public function __construct(); 
+	public function __construct() 
 	{
 		//db connect object
 		global $dbconn;
@@ -21,7 +23,7 @@ class Model_articles extends Model_Base {
 	}
 
 	public function fieldsTable(){
-        return array('id', 'title', 'short_desc', 'text', '$user_id');
+        return array('id', 'title', 'short_desc', 'text', '$user_id', 'datastamp', 'allow_comments');
     }
 	
 }

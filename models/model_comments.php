@@ -6,6 +6,7 @@ class Model_comments extends Model_Base {
 	public $text;
 	public $user_id;
 	public $art_id;
+	public $datastamp;
 	public $rate;
 
 	public function __construct(); 
@@ -21,7 +22,7 @@ class Model_comments extends Model_Base {
 	}
 
 	public function fieldsTable(){
-        return array('id', 'text', 'user_id', 'art_id', '$rate');
+        return array('id', 'text', 'user_id', 'art_id', '$rate', 'datastamp');
     }
 	
 }

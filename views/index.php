@@ -1,40 +1,44 @@
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="language" content="en" />
-	<link rel="stylesheet" type="text/css" href="/css/main.css" />
-	<title>Блог</title>
-</head>
+<?php
+	//index view(main page) with list of all articles
+	//page header
+	require('base/header.php');
+	?>
+	<!-- title. -->
+  <h1> Welcome to blog site, <?php print($login_name); ?>!</h1>
+  <!-- list fo all articles ordered by date-->
+  <div class="articles-list">
+  <?php if (empty($contents)): ?>
+    <!-- if no articles. -->
+    No articles.
+  <?php endif; ?>
+  <?php 
+  	$articles = $contents['articles'];
+  	foreach ($articles as $key => $art): ?>
+    <div class="article-item">
+      <h2><a href="/article.php?id=<?php print $art['id']; ?>"><?php print $art['title']; ?></a></h2>
+      <div class="description">
+        <?php print $art['shortdesc']; ?>
+      </div>
+      <div class="info">
+        <div class="timestamp">
+        	<?php print $art['datastamp']; ?>
+        </div>
+        <div class="links">
+          <a href="/article.php?id=<?php print $art['id']; ?>">Read more...</a>
+          <!-- links only for admins -->
+          <? if($admin): ?>
+            <a href="/edit.php?id=<?php print $art['id']; ?>">Edit</a>
+            <a href="/delete.php?id=<?php print $art['id']; ?>">Delete</a>
+          <? endif; ?>
+        </div>
+      </div>
 
-<body>
-	<div class="main_conteiner">
-		<div class="menu">
-			<ul>
-				<li><a href="/">Главная</a></li>
-				<li><a href="/category/?id=1">Категория 1</a></li>
-				<li><a href="/category/?id=2">Категория 2</a></li>
-				<li><a href="/category/?id=3">Категория 3</a></li>
-			</ul>
-		</div>
-		
-<h1>Главная страница</h1>
-<p>
-	Какой-то текст на главной странице!<br/>
-	Какой-то текст на главной странице!<br/>
-	Какой-то текст на главной странице!<br/>
-	Какой-то текст на главной странице!<br/>
-	Какой-то текст на главной странице!<br/>
-</p>
-		
-		<div class="menu">
-			<ul>
-				<li><a href="/">Главная</a></li>
-				<li><a href="/category/?id=1">Категория 1</a></li>
-				<li><a href="/category/?id=2">Категория 2</a></li>
-				<li><a href="/category/?id=3">Категория 3</a></li>
-			</ul>
-		</div>
-	</div>
-</body>
-</html>
+    </div>
+    <hr>
+  <?php endforeach; ?>
+</div>
+
+<?php
+	//footer
+	require('base/footer.php');
+?>

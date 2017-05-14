@@ -5,21 +5,22 @@ Abstract Class Model_Base {
 
 	protected $db; //db connect object
 	protected $table; //table name
-	private $res; //result 
+	private $res; //result ???????
 	
-	abstract public function __construct($select = false); 
+	abstract public function __construct(); 
 		
 	public function getTable() {
 		return $this->table;
 	}
 	
-	//get all rows from table
-	function getRes(){
+	//get $res - all table
+	public function getRes(){
 		if(!isset($this->res) OR empty($this->res)) return false;
 		return $this->res;
 	}
-		
-	function getRowById($id){
+
+	//	row by id
+	public function getRowById($id){
 		try{
 			$db = $this->db;
 			$stmt = $db->query("SELECT * from $this->table WHERE id = $id");
@@ -31,18 +32,22 @@ Abstract Class Model_Base {
 		return $row;
 	}
 	
-	//get data from db
-	private function makeRes($zapyt){
+	//get all rows ordered by date
+	public function getAll(){
+		return $this->makeRes("SELECT * from $this->table ORDER BY 'datastamp';");
+	}
+
+	//get data from table
+	protected function makeRes($zapyt){
 		try{
 			$db = $this->db;
 			$stmt = $db->query($zapyt);
 			$rows = $stmt->fetchAll();
-			$this->res = $rows;
+			$this->res = $rows;//?
 		}catch(PDOException $e) {
 			echo $e->getMessage();
 			exit;
 		}
-		
 		return $rows;
 	}
 	
