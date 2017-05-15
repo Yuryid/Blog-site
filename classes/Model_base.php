@@ -79,8 +79,8 @@ Abstract Class Model_Base {
 				$data[] = $this->$field;
 			}
 		}
-		$fields_q = implode(', ', $field_names);
-		$data_q = "'" . implode("', '", $data) . "'";
+		$fields_q = strip_tags(implode(', ', $field_names));
+		$data_q = strip_tags("'" . implode("', '", $data) . "'");
 		//echo $fields_q, ' ',$data_q;
 		//querry
 		try {

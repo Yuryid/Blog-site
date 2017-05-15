@@ -19,11 +19,12 @@ Class Controller_ViewArt Extends Controller_Base {
 			if(!empty($res)) {
 				//read article data
 				$arts->fillData($res);
-				$contents['article'] = $model;
+				$contents['article'] = $arts;
 				$contents['page_title'] = $res['title'];
 				//read comments data
 				$coms = new Model_Comments();
-				$res = $coms->getByArtId($_GET['id']);
+				$contents['comments'] = $coms->getByArtId($_GET['id']);
+				//show view 
 				$this->view->show($contents);
 			} else {
 				//empty row 

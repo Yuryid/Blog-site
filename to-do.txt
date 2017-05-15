@@ -2,14 +2,14 @@
 + add new users
 ? route rules
 + compact list of articles (shortened sql select)
-- view article w comments
++ view article w comments
 - add new blog 
 - edit blog
 - delete blog
 - make comments
-- show comment on main page 
+? show comment on main page 
 - delete comments by admin
 - show list of all users
-- password_hash
+? password_hash
 - errors footers
 - eng comments

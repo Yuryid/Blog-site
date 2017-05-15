@@ -9,7 +9,7 @@ class Model_comments extends Model_Base {
 	public $datastamp;
 	public $rate;
 
-	public function __construct(); 
+	public function __construct() 
 	{
 		//db connect object
 		global $dbconn;
@@ -24,7 +24,7 @@ class Model_comments extends Model_Base {
     }
 	//list of comments from article id w user names
     public function getByArtId($art_id){
-    	return $this->makeRes("Select comments.id, text, comments.datastamp, rate, user_id, users.name, art_id FROM comments INNER JOIN users ON comments.user_id = users.id WHERE  comments.art_id=$art_id ORDER BY comments.datastamp DESC;");
+    	return $this->makeRes("Select comments.id, text, comments.datastamp, rate, user_id, users.name FROM comments INNER JOIN users ON comments.user_id = users.id WHERE comments.art_id=$art_id ORDER BY comments.datastamp DESC;");
     }
 }
 ?>
