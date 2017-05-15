@@ -34,7 +34,7 @@ Abstract Class Model_Base {
 	
 	//get all rows ordered by date
 	public function getAll(){
-		return $this->makeRes("SELECT * from $this->table ORDER BY 'datastamp';");
+		return $this->makeRes("SELECT * from $this->table ORDER BY datastamp DESC;");
 	}
 
 	//get data from table

@@ -11,8 +11,8 @@ Class Controller_Index Extends Controller_Base {
 	}
 	//action
 	function index() {
-		$model = new Model_Articles(); // создаем объект модели
-		$articles = $model->getAll(); // получаем все строки
+		$model = new Model_Articles(); //model object
+		$articles = $model->getShortList(); //list w/o full text
 		$contents['articles'] = $articles;
 		$contents['page_title'] = 'Free blog';
 		$this->view->show($contents);

@@ -1,7 +1,7 @@
 - 404 Error page
 + add new users
 ? route rules
-- compact list of articles (shortened sql select)
++ compact list of articles (shortened sql select)
 - add new blog 
 - edit blog
 - delete blog

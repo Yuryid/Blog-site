@@ -4,7 +4,7 @@
   require(HEADER_PATH);
 	?>
 	<!-- title. -->
-  <h1></h1>
+  <h1>Login page</h1>
   <!-- login form -->
  <form action="<?php print _DS.'users'._DS.'login'._DS.'check'; ?>" method="POST" class="form-login">
     <div class="field-item">

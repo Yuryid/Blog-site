@@ -4,7 +4,7 @@
 class Model_articles extends Model_Base {
 	public $id;
 	public $title;
-	public $short_desc;
+	public $shortdesc;
 	public $text;
 	public $user_id;
 	public $datastamp;
@@ -18,12 +18,14 @@ class Model_articles extends Model_Base {
 		
 		//set table name 
 		$this->table = 'articles';
-		
-		//$this->_getResult("SELECT * FROM $this->table" . $sql);
 	}
-
+	//
 	public function fieldsTable(){
-        return array('id', 'title', 'short_desc', 'text', '$user_id', 'datastamp', 'allow_comments');
+        return array('id', 'title', 'shortdesc', 'text', 'user_id', 'datastamp', 'allow_comments');
+    }
+    //list of articles w/o text
+    public function getShortList(){
+    	return $this->makeRes("SELECT id, title, shortdesc, user_id, datastamp, allow_comments from $this->table ORDER BY datastamp DESC;");
     }
 	
 }
