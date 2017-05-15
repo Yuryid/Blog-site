@@ -29,8 +29,9 @@ Class Controller_Login Extends Controller_Base {
 				//check pass
 				if ($_POST['name'] == $result[0]['name'] && md5($_POST['pass']) == $result[0]['pass']) {
 					session_start();
-				    $_SESSION['login'] = $result[0]['name'];
-				    $_SESSION['admin'] = $result[0]['admin'];
+				    $_SESSION['login'] = $model->name;
+				    $_SESSION['admin'] = $model->admin;
+				    $_SESSION['user_id'] = $model->id;
 				    //go to main page
 				    header('Location: '._DS);
 				} else {

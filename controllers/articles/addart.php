@@ -1,6 +1,6 @@
 <?php
 //add new article controller
-Class Controller_Add Extends Controller_Base {
+Class Controller_AddArt Extends Controller_Base {
 	
 	//view name
 	public $view_name = "add";
@@ -18,32 +18,25 @@ Class Controller_Add Extends Controller_Base {
 
 	//action 
 	function check() {
-		$model = new Model_Users(); //model object 
+		$article = new Model_Articles(); //model object 
 		//if POST ok then check data
-		if (!empty($_POST['name']) && !empty($_POST['pass'])) {
-		  //if login correct put data in session
-			$result = $model->findName($_POST['name']);
-			if(!empty($result)){
-				//ok login name
-				//check pass
-				if ($_POST['name'] == $result[0]['name'] && md5($_POST['pass']) == $result[0]['pass']) {
-					session_start();
-				    $_SESSION['login'] = $result[0]['name'];
-				    $_SESSION['admin'] = $result[0]['admin'];
-				    //go to main page
-				    header('Location: '._DS);
-				} else {
-					//wrong password
-					$contents['message'] = 'Wrong password.';
-					$contents['page_title'] = 'Login page';
-					$this->view->show($contents);
-				}	
-			} else {
-				//wrong login name
-				$contents['message'] = 'No such login name.';
-				$contents['page_title'] = 'Login page';
-				$this->view->show($contents);
-			}
+		if (!empty($_POST['title'])) {
+			//put data in object
+			session_start();
+			$article->title = $_POST['title'];
+			$article->shortdesc = $_POST['shortdesc'];
+			$article->text = $_POST['text'];
+			$article->user_id = $_SESSION['user_id'];
+			$article->datastamp = date('Y-m-d G:i:s');
+			$article->allow_comments = $_POST['allow_comments'];
+			$article->id = $article->add();
+			if ($article->id) {
+			    //go to view page
+			    header('Location: '._DS."articles"._DS."viewart"._DS."index?id=$article->id"); 
+			}	
+		} else {
+			//wrong POST
+			die('Wrong call!');
 		}
 	}
 

@@ -35,7 +35,7 @@ if (!isset($_SESSION['login'])) {
   <ul class="main-menu">
     <li><a href="<?php print _DS; ?>">Main page</a></li>
     <?php if ($admin): ?>
-      <li><a href="<?php print _DS . "article" . _DS . "add"; ?>">Add article</a></li>
+      <li><a href="<?php print _DS . "articles" . _DS . "addart". _DS . "index"; ?>">Add article</a></li>
     <?php endif; ?>
     <?php if ($login): ?>
       <li><a href="<?php print _DS . "users". _DS . "login" . _DS . "logout"; ?>">Logout</a></li>

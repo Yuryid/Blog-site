@@ -33,11 +33,13 @@ Class Controller_Register Extends Controller_Base {
 				$model->pass = md5($_POST['pass']);
 				$model->datastamp = date('Y-m-d G:i:s');
 				$model->admin = 0;
-				if($model->add()) {
+				$lastid = $model->add();
+				if($lastid) {
 					//renew session
 					session_start();
 				    $_SESSION['login'] = $name;;
 				    $_SESSION['admin'] = 0;
+				    $_SESSION['user_id'] = $lastid;
 				    //go to main page
 				    header('Location: '._DS);
 				} else {

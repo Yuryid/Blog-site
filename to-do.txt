@@ -3,7 +3,7 @@
 ? route rules
 + compact list of articles (shortened sql select)
 + view article w comments
-- add new blog 
++ add new blog 
 - edit blog
 - delete blog
 - make comments

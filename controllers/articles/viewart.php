@@ -36,47 +36,4 @@ Class Controller_ViewArt Extends Controller_Base {
 		}
 	}
 
-	//action 
-	function check() {
-		$model = new Model_Users(); //model object 
-		//if POST ok then check data
-		if (!empty($_POST['name']) && !empty($_POST['pass'])) {
-		  //if login correct put data in session
-			$result = $model->findName($_POST['name']);
-			if(!empty($result)){
-				//ok login name
-				//check pass
-				if ($_POST['name'] == $result[0]['name'] && md5($_POST['pass']) == $result[0]['pass']) {
-					session_start();
-				    $_SESSION['login'] = $result[0]['name'];
-				    $_SESSION['admin'] = $result[0]['admin'];
-				    //go to main page
-				    header('Location: '._DS);
-				} else {
-					//wrong password
-					$contents['message'] = 'Wrong password.';
-					$contents['page_title'] = 'Login page';
-					$this->view->show($contents);
-				}	
-			} else {
-				//wrong login name
-				$contents['message'] = 'No such login name.';
-				$contents['page_title'] = 'Login page';
-				$this->view->show($contents);
-			}
-		}
-	}
-
-	//action delete
-	function logout() {
-		//renew session before kill
-		session_start();
-		
-		//kill session data
-		session_destroy();
-
-		//back to main page
-		header('Location: '._DS);
-		exit;
-	}
 }
