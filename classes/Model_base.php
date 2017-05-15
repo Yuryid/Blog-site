@@ -50,6 +50,12 @@ Abstract Class Model_Base {
 		}
 		return $rows;
 	}
+	//fill class data from row
+	public function fillData(&$row) {
+		foreach ($row as $key => $value) {
+			$this->$key = $value;
+		}
+	}
 	
 	//delete row by id
 	public function deleteRowById($id){

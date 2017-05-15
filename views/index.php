@@ -15,7 +15,7 @@
   	$articles = $contents['articles'];
   	foreach ($articles as $key => $art): ?>
     <div class="article-item">
-      <h2><a href="/article.php?id=<?php print $art['id']; ?>"><?php print $art['title']; ?></a></h2>
+      <h2><a href="<?php print _DS."articles"._DS."viewart"._DS."index?id={$art['id']}"; ?>"><?php print $art['title']; ?></a></h2>
       <div class="description">
         <?php print $art['shortdesc']; ?>
       </div>
@@ -24,7 +24,7 @@
         	<?php print $art['datastamp']; ?>
         </div>
         <div class="links">
-          <a href="/article.php?id=<?php print $art['id']; ?>">Read more...</a>
+          <a href="<?php print _DS."articles"._DS."viewart"._DS."index?id={$art['id']}"; ?>">Read more...</a>
           <!-- links only for admins -->
           <? if($admin): ?>
             <a href="/edit.php?id=<?php print $art['id']; ?>">Edit</a>

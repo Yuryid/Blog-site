@@ -1,23 +1,38 @@
 <?php
-//login controller
-Class Controller_Login Extends Controller_Base {
+//view one article controller
+Class Controller_ViewArt Extends Controller_Base {
 	
 	//view name
-	public $view_name = "login";
+	public $view_name = "view";
 	
 	function __construct() {
 		//creating proper view class (view_name, controller prefix)
-		$this->view = new View($this->view_name, 'users' . _DS);
+		$this->view = new View($this->view_name, 'articles' . _DS);
 	}
 
-	//action show login form
+	//action show 
 	function index() {
-		$contents['page_title'] = 'Login page';
-		$contents['message'] = 'Write your login and password, please.';
-		$this->view->show($contents);
+		$model = new Model_Articles();
+		if(isset($_GET['id'])){
+			//
+			$res = $model->getRowById($_GET['id']);
+			if(!empty($res)) {
+				//var_dump($res);
+				$model->fillData($res);
+				$contents['article'] = $model;
+				$contents['page_title'] = $res['title'];
+				$this->view->show($contents);
+			} else {
+				//empty row 
+				die ('404 Not Found (article)');
+			}
+		} else {
+			//no id sent
+			die ('404 Not Found (no id sent)');
+		}
 	}
 
-	//action check login
+	//action 
 	function check() {
 		$model = new Model_Users(); //model object 
 		//if POST ok then check data
@@ -48,7 +63,7 @@ Class Controller_Login Extends Controller_Base {
 		}
 	}
 
-	//action logout
+	//action delete
 	function logout() {
 		//renew session before kill
 		session_start();

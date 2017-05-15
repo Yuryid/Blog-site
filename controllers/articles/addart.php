@@ -1,23 +1,22 @@
 <?php
-//login controller
-Class Controller_Login Extends Controller_Base {
+//add new article controller
+Class Controller_Add Extends Controller_Base {
 	
 	//view name
-	public $view_name = "login";
+	public $view_name = "add";
 	
 	function __construct() {
 		//creating proper view class (view_name, controller prefix)
-		$this->view = new View($this->view_name, 'users' . _DS);
+		$this->view = new View($this->view_name, 'articles' . _DS);
 	}
 
-	//action show login form
+	//action show add article form
 	function index() {
-		$contents['page_title'] = 'Login page';
-		$contents['message'] = 'Write your login and password, please.';
+		$contents['page_title'] = 'Add new article';
 		$this->view->show($contents);
 	}
 
-	//action check login
+	//action 
 	function check() {
 		$model = new Model_Users(); //model object 
 		//if POST ok then check data
@@ -48,7 +47,7 @@ Class Controller_Login Extends Controller_Base {
 		}
 	}
 
-	//action logout
+	//action delete
 	function logout() {
 		//renew session before kill
 		session_start();

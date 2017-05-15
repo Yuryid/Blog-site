@@ -12,7 +12,7 @@ Class View {
 	}
 	
 	//show the view
-	function show($contents) {
+	function show(&$contents) {
 		$pathView = SITE_PATH . 'views' . _DS . $this->controller . $this->view_name . '.php';
 		if (file_exists($pathView) == false) {
 			trigger_error ('View `' . $this->view_name . '` does not exist.');

@@ -1,5 +1,5 @@
 <?php
-//index controller(main page)
+//register controller
 Class Controller_Register Extends Controller_Base {
 	
 	//view name
