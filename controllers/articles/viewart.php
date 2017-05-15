@@ -12,15 +12,18 @@ Class Controller_ViewArt Extends Controller_Base {
 
 	//action show 
 	function index() {
-		$model = new Model_Articles();
+		$arts = new Model_Articles();
 		if(isset($_GET['id'])){
 			//
-			$res = $model->getRowById($_GET['id']);
+			$res = $arts->getRowById($_GET['id']);
 			if(!empty($res)) {
-				//var_dump($res);
-				$model->fillData($res);
+				//read article data
+				$arts->fillData($res);
 				$contents['article'] = $model;
 				$contents['page_title'] = $res['title'];
+				//read comments data
+				$coms = new Model_Comments();
+				$res = $coms->getByArtId($_GET['id']);
 				$this->view->show($contents);
 			} else {
 				//empty row 

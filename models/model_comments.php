@@ -17,13 +17,14 @@ class Model_comments extends Model_Base {
 		
 		//set table name 
 		$this->table = 'comments';
-		
-		//$this->_getResult("SELECT * FROM $this->table" . $sql);
 	}
 
 	public function fieldsTable(){
         return array('id', 'text', 'user_id', 'art_id', '$rate', 'datastamp');
     }
-	
+	//list of comments from article id w user names
+    public function getByArtId($art_id){
+    	return $this->makeRes("Select comments.id, text, comments.datastamp, rate, user_id, users.name, art_id FROM comments INNER JOIN users ON comments.user_id = users.id WHERE  comments.art_id=$art_id ORDER BY comments.datastamp DESC;");
+    }
 }
 ?>

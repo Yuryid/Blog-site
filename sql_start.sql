@@ -51,3 +51,9 @@ INSERT INTO articles(id, title, shortdesc, text, datastamp, user_id, allow_comme
  VALUES(NULL, 'Title 2', 'Sample description 2', 'Sample text 2', '2017-05-13 21:05:46', 1, 0);
 INSERT INTO articles(id, title, shortdesc, text, datastamp, user_id, allow_comments)
  VALUES(NULL, 'Title 3', 'Sample description 3', 'Sample text 3', '2017-05-13 21:06:46', 1, 0);
+INSERT INTO comments(id, text, datastamp, rate, user_id, art_id) 
+VALUES(NULL, 'Comment example1. awesome article!','2017-05-13 21:07:46',0,2,2);
+INSERT INTO comments(id, text, datastamp, rate, user_id, art_id) 
+VALUES(NULL, 'Comment example2. good article!','2017-05-14 21:07:46',0,1,2);
+INSERT INTO comments(id, text, datastamp, rate, user_id, art_id) 
+VALUES(NULL, 'Comment example3. bad article!','2017-05-15 21:07:46',0,2,1);
