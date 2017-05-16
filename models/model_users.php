@@ -25,13 +25,7 @@ class Model_Users extends Model_Base {
 	public function findName($name) {
 		$row = $this->makeRes("SELECT * from users WHERE name = '$name';");
 		if(!empty($row)) {
-			//var_dump($row);
 			$this->fillData($row[0]);
-			// $this->id = $row[0]['id'];
-			// $this->name = $row[0]['name'];
-			// $this->pass = $row[0]['pass'];
-	 	// 	$this->datastamp = $row[0]['datastamp'];
-	 	// 	$this->admin = $row[0]['admin'];
 			return $row;
 		} else {
 			return false;

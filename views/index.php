@@ -10,12 +10,15 @@
   <?php if (empty($contents)): ?>
     <!-- if no articles. -->
     No articles.
-  <?php endif; ?>
+  <?php else: ?>
   <?php 
   	$articles = $contents['articles'];
   	foreach ($articles as $key => $art): ?>
     <div class="article-item">
       <h2><a href="<?php print _DS."articles"._DS."viewart"._DS."index?id={$art['id']}"; ?>"><?php print $art['title']; ?></a></h2>
+      <div class="autor">
+        Autor:  <?php echo (!empty($art['name']))?$art['name']:"Deleted user"; ?>
+      </div>
       <div class="description">
         <?php print $art['shortdesc']; ?>
       </div>
@@ -35,7 +38,8 @@
 
     </div>
     <hr>
-  <?php endforeach; ?>
+  <?php endforeach; 
+  endif; ?>
 </div>
 
 <?php

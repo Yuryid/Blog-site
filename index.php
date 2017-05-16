@@ -12,6 +12,7 @@ try {
 }
 catch(PDOException $e) {
     print "DB ERROR: {$e->getMessage()}";
+   // include('');
 }
 
 //class autoloader, (all in classes folder now)

@@ -69,7 +69,8 @@ Class Router {
 		
         //check action
         if (is_callable(array($controller, $action)) == false) {
-			die ('404 Not Found action '. $action);
+         	header('Location: '._DS."errors"._DS."404"._DS."index?msg=Not found action ". $action); 
+			die ('404 Not found action '. $action);
         }
 
         //and run it if ok

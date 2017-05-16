@@ -1,5 +1,5 @@
 <?php
-	//view article 
+	//view one article 
 	//page header
   require(HEADER_PATH);
   $art = $contents['article'];

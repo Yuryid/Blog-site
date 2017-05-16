@@ -1,19 +1,19 @@
-- 404 Error page
 + add new users
-? route rules
 + compact list of articles (shortened sql select)
 + view article w comments
 + add new blog
 + edit blog
 + fix checked allow coms
-- named articles
 + delete blog
 + make comments
-? show comment on main page 
 + delete comments by admin
 + send back to page
-- show list of all users
-? password_hash
++ 404 Error page
++ named articles
 - errors footers/redo errors into warns/error pages
 - eng comments
 - disallow comments button
+? route rules
+? show comment on main page
+? password_hash
+? show list of all users

@@ -18,9 +18,7 @@ Class Controller_ViewArt Extends Controller_Base {
 			$res = $arts->getRowById($_GET['id']);
 			if(!empty($res)) {
 				//read article data
-				//$arts->fillData($res);
 				$contents['article'] = $arts;
-				//var_dump($arts);
 				$contents['page_title'] = $res['title'];
 				//read comments data
 				$coms = new Model_Comments();
