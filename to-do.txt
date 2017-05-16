@@ -3,13 +3,15 @@
 ? route rules
 + compact list of articles (shortened sql select)
 + view article w comments
-+ add new blog 
-- edit blog
++ add new blog
++ edit blog
++ fix checked allow coms
+- named articles
 - delete blog
 - make comments
 ? show comment on main page 
 - delete comments by admin
 - show list of all users
 ? password_hash
-- errors footers
+- errors footers/redo errors into warns
 - eng comments

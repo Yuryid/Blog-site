@@ -29,6 +29,7 @@ Abstract Class Model_Base {
 			echo $e->getMessage();
 			exit;
 		}
+		$this->fillData($row);
 		return $row;
 	}
 	
@@ -50,7 +51,7 @@ Abstract Class Model_Base {
 		}
 		return $rows;
 	}
-	//fill class data from row
+	//fill class data from one row
 	public function fillData(&$row) {
 		foreach ($row as $key => $value) {
 			$this->$key = $value;
@@ -101,14 +102,14 @@ Abstract Class Model_Base {
 		//filling params from class data
 		$All_fields_names = $this->fieldsTable();
 		foreach($All_fields_names as $field){
-			if(!empty($this->$field)){
+			if(isset($this->$field)){
 				if($field != 'id') {
 					$data[] = $field . ' = "' . $this->$field . '"';
 				}
 				else {
 					$key_id = $this->$field;
 				}
-				$data[] = $this->$field;
+				//$data[] = $this->$field;
 			}
 		}
 		if(!isset($data) OR empty($data)){
@@ -119,12 +120,15 @@ Abstract Class Model_Base {
 			echo "ID table `$this->table` not found!";
 			exit;
 		}
-		$data_q = "'" . implode("', '", $field_names) . "'";
+		$data_q = implode(", ", $data);
 		//querry
 		try {
-    		$stmt = $conn->prepare('UPDATE $this->table SET $data_q WHERE id = $key_id');
+    		$stmt = $this->db->prepare("UPDATE $this->table SET $data_q WHERE id = $key_id");
+    		//echo "UPDATE $this->table SET $data_q WHERE id = $key_id";
 			//executing querry
-    		$status = $stmt->execute();
+    		if($stmt->execute()) {
+		    	return true;
+		    } else return false;
 		  } catch(PDOException $e) {
 		    // 
 		    print "ERROR: {$e->getMessage()}";

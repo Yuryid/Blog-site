@@ -3,26 +3,29 @@
 	//page header
   require(HEADER_PATH);
   $art = $contents['article'];
+  //var_dump($art);
 	?>
 	<!-- title. -->
   
 <!-- output article -->
 <div class="article-once">
   <h1> <?php print $art->title; ?> </h1>
-  <div class="info-wrapp">
-    <span class="timestamp"><?php print $art->datastamp; ?></span>
-    <? if($admin): ?>
-      <a href="/edit.php?id=<?php print $art->id; ?>">Edit</a>
+  <div class="info-article">
+    <span class="timestamp"><?php print $art->datastamp;?></span>
+    <?php if($admin): ?>
+      <a href="<?php print _DS."articles"._DS."editart"._DS."index?id=$art->id"; ?>">Edit</a>
       <a href="/delete.php?id=<?php print $art->id; ?>">Delete</a>
-    <? endif; ?>
+    <?php endif; ?>
   </div>
-  <div class="full-desc">
-    <?php print $art->text; ?>
+  <div class="text">
+    <?php print $art->text;?>
   </div>
 </div>
+
 <hr>
 <!-- output comments   -->
  <?php 
+if($art->allow_comments):
     $coms = $contents['comments'];
     if(!empty($coms)):
       // var_dump($coms);
@@ -50,7 +53,7 @@
     <?php endforeach;
       else:?>
     <div><i>No comments</i></div>
-    <?php endif; ?>
+    <?php endif; endif;?>
 <?php
 	//footer
 	require(FOOTER_PATH);

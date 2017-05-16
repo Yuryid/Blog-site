@@ -27,7 +27,7 @@
           <a href="<?php print _DS."articles"._DS."viewart"._DS."index?id={$art['id']}"; ?>">Read more...</a>
           <!-- links only for admins -->
           <? if($admin): ?>
-            <a href="/edit.php?id=<?php print $art['id']; ?>">Edit</a>
+            <a href="<?php print _DS."articles"._DS."editart"._DS."index?id={$art['id']}"; ?>">Edit</a>
             <a href="/delete.php?id=<?php print $art['id']; ?>">Delete</a>
           <? endif; ?>
         </div>
