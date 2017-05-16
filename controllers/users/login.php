@@ -32,8 +32,8 @@ Class Controller_Login Extends Controller_Base {
 				    $_SESSION['login'] = $model->name;
 				    $_SESSION['admin'] = $model->admin;
 				    $_SESSION['user_id'] = $model->id;
-				    //go to main page
-				    header('Location: '._DS);
+				    //go to last page
+				    header('Location: '.$_GET['last_url']);
 				} else {
 					//wrong password
 					$contents['message'] = 'Wrong password.';

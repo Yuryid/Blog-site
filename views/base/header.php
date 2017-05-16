@@ -42,8 +42,8 @@ if (!isset($_SESSION['login'])) {
     <?php endif; ?>
     <?php if (!$login): ?>
       <li>
-        <a href="<?php print _DS . "users". _DS . "login" . _DS . "index"; ?>">Login</a> or 
-        <a href="<?php print _DS . "users". _DS . "register" . _DS . "index"; ?>">Register</a>
+        <a href="<?php print _DS . "users". _DS . "login" . _DS . "index?last_url={$_SERVER['REQUEST_URI']}"; ?>">Login</a> or 
+        <a href="<?php print _DS . "users". _DS . "register" . _DS . "index?last_url={$_SERVER['REQUEST_URI']}"; ?>">Register</a>
       </li>
     <?php endif; ?>
   </ul>

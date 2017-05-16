@@ -59,13 +59,17 @@ Abstract Class Model_Base {
 	}
 	
 	//delete row by id
-	public function deleteRowById($id){
+	public function deleteRowById(){
 		try {
 			$db = $this->db;
-			$result = $db->exec("DELETE FROM $this->table WHERE id = $id");
+			if(!isset($this->id) OR empty($this->id)){
+				echo "ID table `$this->table` not found!";
+				exit;
+			}
+			$result = $db->exec("DELETE FROM $this->table WHERE id = $this->id");
 		}catch(PDOException $e){
 			echo 'Error : '.$e->getMessage();
-			echo '<br/>Error sql : ' . "'DELETE FROM $this->table WHERE id = $id'"; 
+			echo '<br/>Error sql : ' . "'DELETE FROM $this->table WHERE id = $this->id'"; 
 			exit();
 		}			
 		return $result;
@@ -109,7 +113,6 @@ Abstract Class Model_Base {
 				else {
 					$key_id = $this->$field;
 				}
-				//$data[] = $this->$field;
 			}
 		}
 		if(!isset($data) OR empty($data)){

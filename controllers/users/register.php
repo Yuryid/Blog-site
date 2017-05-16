@@ -41,7 +41,7 @@ Class Controller_Register Extends Controller_Base {
 				    $_SESSION['admin'] = 0;
 				    $_SESSION['user_id'] = $lastid;
 				    //go to main page
-				    header('Location: '._DS);
+				    header('Location: '.$_GET['last_url']);
 				} else {
 					//some error
 					$contents['message'] = 'Unsuccesfull user creation, try again.';

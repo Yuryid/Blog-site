@@ -7,7 +7,7 @@
   <h1>Register new user</h1>
   <div class="login-status"> <?php print $contents['message']; ?> </div>
   <!-- login form -->
- <form action="<?php print _DS.'users'._DS.'register'._DS.'check'; ?>" method="POST" class="form-login">
+ <form action="<?php print _DS.'users'._DS.'register'._DS."check?last_url={$_GET['last_url']}"; ?>" method="POST" class="form-login">
     <div class="field-item">
       <label for="name">Login</label>
       <input type="text" name="name" id="name" required>

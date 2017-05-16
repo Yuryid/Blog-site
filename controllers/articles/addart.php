@@ -23,33 +23,23 @@ Class Controller_AddArt Extends Controller_Base {
 		if (!empty($_POST['title'])) {
 			//put data in object
 			session_start();
-			$article->title = $_POST['title'];
-			$article->shortdesc = $_POST['shortdesc'];
-			$article->text = $_POST['text'];
-			$article->user_id = $_SESSION['user_id'];
+			$article->title = htmlspecialchars($_POST['title']);
+			$article->shortdesc = htmlspecialchars($_POST['shortdesc']);
+			$article->text = htmlspecialchars($_POST['text']);
+			$article->user_id = htmlspecialchars($_SESSION['user_id']);
 			$article->datastamp = date('Y-m-d G:i:s');
 			$article->allow_comments = (!empty($_POST['allow_comments']) && $_POST['allow_comments'] == 'on')?1: 0;
 			$article->id = $article->add();
 			if ($article->id) {
 			    //go to view page
 			    header('Location: '._DS."articles"._DS."viewart"._DS."index?id=$article->id"); 
-			}	
+			} else {
+				//unsuccessful art add
+				die('unsuccessful article add!');
+			}
 		} else {
 			//wrong POST
 			die('Wrong call!');
 		}
-	}
-
-	//action delete
-	function logout() {
-		//renew session before kill
-		session_start();
-		
-		//kill session data
-		session_destroy();
-
-		//back to main page
-		header('Location: '._DS);
-		exit;
 	}
 }

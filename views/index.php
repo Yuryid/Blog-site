@@ -28,7 +28,7 @@
           <!-- links only for admins -->
           <? if($admin): ?>
             <a href="<?php print _DS."articles"._DS."editart"._DS."index?id={$art['id']}"; ?>">Edit</a>
-            <a href="/delete.php?id=<?php print $art['id']; ?>">Delete</a>
+            <a href="<?php print _DS."articles"._DS."editart"._DS."delete?id={$art['id']}"; ?>">Delete</a>
           <? endif; ?>
         </div>
       </div>

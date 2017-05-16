@@ -7,11 +7,13 @@
 + edit blog
 + fix checked allow coms
 - named articles
-- delete blog
-- make comments
++ delete blog
++ make comments
 ? show comment on main page 
-- delete comments by admin
++ delete comments by admin
++ send back to page
 - show list of all users
 ? password_hash
-- errors footers/redo errors into warns
+- errors footers/redo errors into warns/error pages
 - eng comments
+- disallow comments button

@@ -25,7 +25,7 @@ Class Controller_EditArt Extends Controller_Base {
 			}
 		} else {
 			//wrong action call
-			die('Wrong action call!');
+			die('Wrong action index call!');
 		}
 		$contents['page_title'] = 'Edit article';
 		$this->view->show($contents);
@@ -38,14 +38,13 @@ Class Controller_EditArt Extends Controller_Base {
 		if (!empty($_POST['id'])) {
 			//put data in object
 			session_start();
-			$article->id = $_POST['id'];
-			$article->title = $_POST['title'];
-			$article->shortdesc = $_POST['shortdesc'];
-			$article->text = $_POST['text'];
+			$article->id = htmlspecialchars($_POST['id']);
+			$article->title = htmlspecialchars($_POST['title']);
+			$article->shortdesc = htmlspecialchars($_POST['shortdesc']);
+			$article->text = htmlspecialchars($_POST['text']);
 			$article->user_id = $_SESSION['user_id'];
 			$article->datastamp = date('Y-m-d G:i:s');
 			$article->allow_comments = (!empty($_POST['allow_comments']) && $_POST['allow_comments'] == 'on')?1: 0;
-			//$article->id = $article->add();
 			if ($article->update()) {
 			    //go to view page
 			    header('Location: '._DS."articles"._DS."viewart"._DS."index?id=$article->id"); 
@@ -55,20 +54,27 @@ Class Controller_EditArt Extends Controller_Base {
 			}	
 		} else {
 			//wrong POST
-			die('Wrong action call!');
+			die('Wrong action check call!');
 		}
 	}
 
 	//action delete
-	function logout() {
-		//renew session before kill
-		session_start();
-		
-		//kill session data
-		session_destroy();
-
-		//back to main page
-		header('Location: '._DS);
-		exit;
+	function delete() {
+		//if POST ok then check data
+		if (!empty($_GET['id'])) {	
+			$article = new Model_Articles();
+			$article->id = $_GET['id'];
+			if($article->deleteRowById()){
+				//back to main page
+				header('Location: '._DS);
+				exit;
+			} else {
+				//unsuccesful delete
+				die('unsuccesful delete!');
+			}
+		} else {
+			//wrong POST
+			die('Wrong action delete call!');
+		}
 	}
 }
