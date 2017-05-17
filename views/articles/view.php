@@ -3,10 +3,7 @@
 	//page header
   require(HEADER_PATH);
   $art = $contents['article'];
-  //var_dump($art);
 	?>
-	<!-- title. -->
-  
 <!-- output article -->
 <div class="article-once">
   <h1> <?php print $art->title; ?> </h1>
@@ -21,7 +18,6 @@
     <?php print $art->text;?>
   </div>
 </div>
-
 <hr>
 <!-- comments   -->
 <?php if($art->allow_comments):
@@ -40,7 +36,6 @@
 <?php endif;//login
   $coms = $contents['comments'];
     if(!empty($coms)):
-      // var_dump($coms);
       foreach ($coms as $key => $com): ?>
       <div class="comment-item">
         <div class = "comment-header">

@@ -11,12 +11,10 @@
       <label for="name">Login</label>
       <input type="text" name="name" id="name" required>
     </div>
-
     <div class="field-item">
       <label for="pass">Password</label>
       <input type="password" name="pass" maxlength="16" minlength="3">
     </div>
-
     <input type="submit" name="submit" value="Send">
   </form>
   <div class="login-status"> <?php print $contents['message']; ?> </div>

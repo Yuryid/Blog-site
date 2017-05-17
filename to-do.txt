@@ -10,8 +10,8 @@
 + send back to page
 + 404 Error page
 + named articles
-- errors footers/redo errors into warns/error pages
-- eng comments
++ errors footers/redo errors into warns/error pages
++ eng comments
 - disallow comments button
 ? route rules
 ? show comment on main page

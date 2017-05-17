@@ -26,11 +26,13 @@ Class Controller_ViewArt Extends Controller_Base {
 				//show view 
 				$this->view->show($contents);
 			} else {
-				//empty row 
+				//empty row
+				header('Location: '._DS."errors"._DS."dberror"._DS."index?msg=DB Error: Not Found article"); 
 				die ('404 Not Found (article)');
 			}
 		} else {
 			//no id sent
+			header('Location: '._DS."errors"._DS."404"._DS."index?msg=Wrong call( no id sent)");
 			die ('404 Not Found (no id sent)');
 		}
 	}

@@ -19,7 +19,6 @@ if (!isset($_SESSION['login'])) {
   $login_name = $_SESSION['login'];
   $admin = (bool)$_SESSION['admin']; 
 }
-//echo $_SESSION['login'], $_SESSION['admin'];
 ?>
 <!-- main header. -->
 <!DOCTYPE html>

@@ -56,17 +56,4 @@ Class Controller_Register Extends Controller_Base {
 			}
 		}
 	}
-
-	//action logout
-	function logout() {
-		//renew session before kill
-		session_start();
-		
-		//kill session data
-		session_destroy();
-
-		//back to main page
-		header('Location: '._DS);
-		exit;
-	}
 }

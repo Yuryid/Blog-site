@@ -35,7 +35,6 @@
           <? endif; ?>
         </div>
       </div>
-
     </div>
     <hr>
   <?php endforeach; 

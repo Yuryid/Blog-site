@@ -20,7 +20,6 @@
 
     <input type="submit" name="submit" value="Send">
   </form>
-  
 <?php
 	//footer
 	require(FOOTER_PATH);

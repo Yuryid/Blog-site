@@ -12,6 +12,7 @@ Class Controller_DBError Extends Controller_Base {
 	//action
 	function index() {
 		$contents['page_title'] = 'DB Error';
+		$contents['msg'] = $_GET['msg'];
 		$this->view->show($contents);
 	}
 	

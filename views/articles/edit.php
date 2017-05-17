@@ -7,7 +7,6 @@
 	<!-- title. -->
   <h1><?php print $page_title; ?></h1>
   <!-- edit form -->
-  <!-- <div class="status"> <?php print $contents['message']; ?> </div> -->
   <form action="<?php print _DS.'articles'._DS.'editart'._DS.'check'; ?>" method="POST" class="form-add">
 
   <div class="field-item">
@@ -21,7 +20,6 @@
   </div>
 
   <div class="field-item">
-    <!-- <label for="full_desc">Повний зміст</label> -->
     <textarea name="text" id="full_desc"><?php print $art->text; ?></textarea>
   </div>
   <div class="field-item">
@@ -33,8 +31,6 @@
 
 </form>
 <?php
-
-
 	//footer
 	require(FOOTER_PATH);
 ?>

@@ -5,7 +5,6 @@ Abstract Class Model_Base {
 
 	protected $db; //db connect object
 	protected $table; //table name
-	private $res; //result ???????
 	
 	abstract public function __construct(); 
 		
@@ -13,20 +12,14 @@ Abstract Class Model_Base {
 		return $this->table;
 	}
 	
-	//get $res - all table
-	public function getRes(){
-		if(!isset($this->res) OR empty($this->res)) return false;
-		return $this->res;
-	}
-
-	//	row by id
+	//row by id
 	public function getRowById($id){
 		try{
 			$db = $this->db;
 			$stmt = $db->query("SELECT * from $this->table WHERE id = $id");
 			$row = $stmt->fetch();
 		}catch(PDOException $e) {
-			echo $e->getMessage();
+			header('Location: '._DS."errors"._DS."dberror"._DS."index?msg=DB Error: {$e->getMessage()}"); 
 			exit;
 		}
 		$this->fillData($row);
@@ -44,9 +37,8 @@ Abstract Class Model_Base {
 			$db = $this->db;
 			$stmt = $db->query($zapyt);
 			$rows = $stmt->fetchAll();
-			$this->res = $rows;//?
 		}catch(PDOException $e) {
-			echo $e->getMessage();
+			header('Location: '._DS."errors"._DS."dberror"._DS."index?msg=DB Error: {$e->getMessage()}");
 			exit;
 		}
 		return $rows;
@@ -58,26 +50,25 @@ Abstract Class Model_Base {
 		}
 	}
 	
-	//delete row by id
+	//delete row by this->id
 	public function deleteRowById(){
 		try {
 			$db = $this->db;
 			if(!isset($this->id) OR empty($this->id)){
-				echo "ID table `$this->table` not found!";
+				header('Location: '._DS."errors"._DS."dberror"._DS."index?msg=ID table $this->table not set!");
 				exit;
 			}
 			$result = $db->exec("DELETE FROM $this->table WHERE id = $this->id");
 		}catch(PDOException $e){
-			echo 'Error : '.$e->getMessage();
-			echo '<br/>Error sql : ' . "'DELETE FROM $this->table WHERE id = $this->id'"; 
-			exit();
+			header('Location: '._DS."errors"._DS."dberror"._DS."index?msg=DB Error: {$e->getMessage()}");
+			exit;
 		}			
 		return $result;
 	}
 	//add new row
 	public function add(){
 		$All_fields_names = $this->fieldsTable();
-		//filling params from class data
+		//filling params from class data minus id
 		foreach($All_fields_names as $field){
 			if(isset($this->$field)){
 				$field_names[] = $field;
@@ -86,10 +77,8 @@ Abstract Class Model_Base {
 		}
 		$fields_q = strip_tags(implode(', ', $field_names));
 		$data_q = strip_tags("'" . implode("', '", $data) . "'");
-		//echo $fields_q, ' ',$data_q;
 		//querry
 		try {
-			//echo "INSERT INTO $this->table (id, $fields_q) VALUES(NULL, $data_q)";
 		    $stmt = $this->db->prepare("INSERT INTO $this->table (id, $fields_q) VALUES(NULL, $data_q)");
 		    //executing querry
 		    if($stmt->execute()) {
@@ -97,7 +86,7 @@ Abstract Class Model_Base {
 		    } else return false;
 
 		  } catch(PDOException $e) {
-		    print "ERROR: {$e->getMessage()}";
+		    header('Location: '._DS."errors"._DS."dberror"._DS."index?msg=DB Error: {$e->getMessage()}");
 		    exit;
 			}
 	}
@@ -115,26 +104,25 @@ Abstract Class Model_Base {
 				}
 			}
 		}
+
 		if(!isset($data) OR empty($data)){
-			echo "Array data table `$this->table` empty!";
+			header('Location: '._DS."errors"._DS."dberror"._DS."index?msg=DB Error: Array data table `$this->table` empty!");
 			exit;
 		}
 		if(!isset($key_id) OR empty($key_id)){
-			echo "ID table `$this->table` not found!";
+			header('Location: '._DS."errors"._DS."dberror"._DS."index?msg=DB Error: ID table `$this->table` not set!");
 			exit;
 		}
 		$data_q = implode(", ", $data);
 		//querry
 		try {
     		$stmt = $this->db->prepare("UPDATE $this->table SET $data_q WHERE id = $key_id");
-    		//echo "UPDATE $this->table SET $data_q WHERE id = $key_id";
 			//executing querry
     		if($stmt->execute()) {
 		    	return true;
 		    } else return false;
 		  } catch(PDOException $e) {
-		    // 
-		    print "ERROR: {$e->getMessage()}";
+		  	header('Location: '._DS."errors"._DS."dberror"._DS."index?msg=DB Error: {$e->getMessage()}");
 		    exit;
 		  }
 	}

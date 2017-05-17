@@ -53,7 +53,8 @@ Class Controller_Login Extends Controller_Base {
 	function logout() {
 		//renew session before kill
 		session_start();
-		
+		// Unset all of the session variables.
+		$_SESSION = array();
 		//kill session data
 		session_destroy();
 

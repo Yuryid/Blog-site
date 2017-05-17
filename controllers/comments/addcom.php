@@ -26,10 +26,12 @@ Class Controller_AddCom Extends Controller_Base {
 				//go to view page
 			    header('Location: '._DS."articles"._DS."viewart"._DS."index?id=$comment->art_id"); 
 			} else {
-
+				header('Location: '._DS."errors"._DS."dberror"._DS."index?msg=DB Error: unsuccessful comment add");
+				die;
 			}
 		} else {
 			//wrong POST
+			header('Location: '._DS."errors"._DS."404"._DS."index?msg=Wrong call add comment action");
 			die('Wrong call add comment action!');
 		}
 
@@ -50,10 +52,12 @@ Class Controller_AddCom Extends Controller_Base {
 				exit;
 			} else {
 				//unsuccesful delete
+				header('Location: '._DS."errors"._DS."dberror"._DS."index?msg=DB Error: unsuccessful comment delete");
 				die('unsuccesful comment delete!');
 			}
 		} else {
 			//wrong POST
+			header('Location: '._DS."errors"._DS."404"._DS."index?msg=Wrong call delete comment action");
 			die('Wrong action delete comment call!');
 		}
 	}

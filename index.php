@@ -12,10 +12,9 @@ try {
 }
 catch(PDOException $e) {
     print "DB ERROR: {$e->getMessage()}";
-   // include('');
 }
 
-//class autoloader, (all in classes folder now)
+//class autoloader, (find classes in folders classes, controllers, models)
 if(!function_exists('classAutoLoader')){
         function classAutoLoader($className){
             $filename = strtolower($className) . '.php';
@@ -49,8 +48,6 @@ spl_autoload_register('classAutoLoader');
 
 //router loading
 $router = new Router();
-//set path where are all controllers
-//$router->setPath (SITE_PATH . 'controllers');
 
 //start
 $router->start();	

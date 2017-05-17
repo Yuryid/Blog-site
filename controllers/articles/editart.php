@@ -21,10 +21,12 @@ Class Controller_EditArt Extends Controller_Base {
 				$contents['article'] = $art;
 			} else {
 				//no such id
+				header('Location: '._DS."errors"._DS."404"._DS."index?msg=Wrong id");
 				die('Wrong id!');
 			}
 		} else {
 			//wrong action call
+			header('Location: '._DS."errors"._DS."404"._DS."index?msg=Wrong action index call");
 			die('Wrong action index call!');
 		}
 		$contents['page_title'] = 'Edit article';
@@ -50,10 +52,12 @@ Class Controller_EditArt Extends Controller_Base {
 			    header('Location: '._DS."articles"._DS."viewart"._DS."index?id=$article->id"); 
 			} else {
 				//unsuccesful update
+				header('Location: '._DS."errors"._DS."dberror"._DS."index?msg=DB Error: unsuccessful article update!");
 				die('unsuccesful update!');
 			}	
 		} else {
 			//wrong POST
+			header('Location: '._DS."errors"._DS."404"._DS."index?msg=Wrong call");
 			die('Wrong action check call!');
 		}
 	}
@@ -70,10 +74,12 @@ Class Controller_EditArt Extends Controller_Base {
 				exit;
 			} else {
 				//unsuccesful delete
+				header('Location: '._DS."errors"._DS."dberror"._DS."index?msg=DB Error: unsuccessful article article!");
 				die('unsuccesful delete!');
 			}
 		} else {
 			//wrong POST
+			header('Location: '._DS."errors"._DS."404"._DS."index?msg=Wrong call");
 			die('Wrong action delete call!');
 		}
 	}

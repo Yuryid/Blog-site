@@ -35,10 +35,12 @@ Class Controller_AddArt Extends Controller_Base {
 			    header('Location: '._DS."articles"._DS."viewart"._DS."index?id=$article->id"); 
 			} else {
 				//unsuccessful art add
+				header('Location: '._DS."errors"._DS."dberror"._DS."index?msg=DB Error: unsuccessful article add!"); 
 				die('unsuccessful article add!');
 			}
 		} else {
 			//wrong POST
+			header('Location: '._DS."errors"._DS."404"._DS."index?msg=Wrong call");
 			die('Wrong call!');
 		}
 	}
