@@ -3,43 +3,47 @@
 	//page header
 	require(HEADER_PATH);
 	?>
-	<!-- title. -->
-  <h1> Welcome to blog site, <?php print($login_name); ?>!</h1>
-  <!-- list fo all articles ordered by date-->
-  <div class="articles-list">
-  <?php if (empty($contents)): ?>
-    <!-- if no articles. -->
-    No articles.
-  <?php else: ?>
-  <?php 
-  	$articles = $contents['articles'];
-  	foreach ($articles as $key => $art): ?>
-    <div class="article-item">
-      <h2><a href="<?php print _DS."articles"._DS."viewart"._DS."index?id={$art['id']}"; ?>"><?php print $art['title']; ?></a></h2>
-      <div class="autor">
-        Autor:  <?php echo (!empty($art['name']))?$art['name']:"Deleted user"; ?>
-      </div>
-      <div class="description">
-        <?php print $art['shortdesc']; ?>
-      </div>
-      <div class="info">
-        <div class="timestamp">
-        	<?php print $art['datastamp']; ?>
+<main class="container">
+  <!-- title. -->
+  <div class="blog-header">
+    <!-- <img src="<?php print  '..'._DS.'img'._DS.'header-blog.jpg' ?>" alt=""> -->
+    <h1 class="blog-title"> The test blog site</h1>
+    <p class="lead blog-description">The example blog created with php, css, sass and Bootstrap</p>
+  </div>
+  <div class="row">
+    <!-- list fo all articles ordered by date-->
+    <div class=" col-sm-12 articles-list">
+      <?php if (empty($contents)): ?>
+        <!-- if no articles. -->
+        No articles.
+      <?php else: ?>
+      <?php 
+    	$articles = $contents['articles'];
+    	foreach ($articles as $key => $art): ?>
+      <article class="article-item">
+        <h2 class="article-title"><a href="<?php print _DS."articles"._DS."viewart"._DS."index?id={$art['id']}"; ?>"><?php print $art['title']; ?></a></h2>
+
+        <div class="date-autor">
+          <?php print $art['datastamp']; ?> <span class="autor"><?php echo (!empty($art['name']))?$art['name']:"Deleted user"; ?></span>
         </div>
-        <div class="links">
-          <a href="<?php print _DS."articles"._DS."viewart"._DS."index?id={$art['id']}"; ?>">Read more...</a>
+        <p class="description"><?php print $art['shortdesc']; ?></p>
+        <div class="tools container-fluid">
+          <a class="blog-nav-item" href="<?php print _DS."articles"._DS."viewart"._DS."index?id={$art['id']}"; ?>">Read more...</a>
           <!-- links only for admins -->
           <? if($admin): ?>
-            <a href="<?php print _DS."articles"._DS."editart"._DS."index?id={$art['id']}"; ?>">Edit</a>
-            <a href="<?php print _DS."articles"._DS."editart"._DS."delete?id={$art['id']}"; ?>">Delete</a>
+          <div class="pull-right">
+            <a class="blog-nav-item" href="<?php print _DS."articles"._DS."editart"._DS."index?id={$art['id']}"; ?>">Edit</a>
+            <a class="blog-nav-item" href="<?php print _DS."articles"._DS."editart"._DS."delete?id={$art['id']}"; ?>">Delete</a>
+          </div>
+
           <? endif; ?>
         </div>
-      </div>
+      </article>
+      <?php endforeach; 
+      endif; ?>
     </div>
-    <hr>
-  <?php endforeach; 
-  endif; ?>
-</div>
+  </div>
+</main>
 
 <?php
 	//footer

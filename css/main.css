@@ -1,0 +1,115 @@
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+  color: #555;
+  background-color: rgba(190, 234, 250, 0.45098); }
+
+main {
+  min-height: calc(100vh - 115px); }
+
+hr {
+  border-color: #333; }
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  margin-top: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: normal;
+  color: #333; }
+
+a:hover {
+  text-decoration: none; }
+
+/*
+ * Override Bootstrap's default container.
+ */
+@media (min-width: 1200px) {
+  .container {
+    width: 970px; } }
+.blog-hmenu {
+  background-color: #428bca;
+  -webkit-box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 -2px 5px rgba(0, 0, 0, 0.1);
+  color: #cdddeb; }
+
+/* Nav links */
+.blog-nav-item {
+  position: relative;
+  display: inline-block;
+  padding: 0.5em;
+  font-weight: 500;
+  color: #cdddeb;
+  font-size: 1.3em; }
+
+.blog-nav-item:hover,
+.blog-nav-item:focus {
+  color: #fff;
+  text-decoration: none; }
+
+/*
+ * Blog name and description
+ */
+.blog-header {
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  padding-left: 1.5em;
+  background: url(../img/header-blog.jpg) center repeat-x border-box #428bca;
+  background-size: cover; }
+
+.blog-title {
+  margin-top: 0.1em;
+  margin-bottom: 0;
+  font-size: 5em;
+  font-weight: normal;
+  text-shadow: 0.04em 0.04em 2px white; }
+
+.blog-description {
+  font-size: 1.5em;
+  color: #333; }
+
+.articles-list {
+  font-size: 1.4em;
+  line-height: 1.5; }
+
+.article-item {
+  margin-top: 1em;
+  margin-bottom: 1em;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1em; }
+  .article-item .article-title {
+    margin-bottom: 5px;
+    font-size: 2.5em; }
+    .article-item .article-title a {
+      color: #333; }
+    .article-item .article-title a:hover {
+      color: #428bca; }
+  .article-item .date-autor {
+    margin-bottom: 1em;
+    color: #999; }
+    .article-item .date-autor .autor {
+      color: #4800FF; }
+  .article-item .description {
+    font-size: 1em;
+    font-style: italic; }
+  .article-item .tools {
+    background-color: #428bca;
+    border-radius: 5px;
+    font-size: 0.75em; }
+    .article-item .tools .blog-nav-item {
+      padding: 0;
+      margin: 0 0.5em; }
+
+.blog-footer {
+  padding: 0.5em 0;
+  color: #999;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e5e5e5;
+  height: 70px; }
+
+.blog-footer p:last-child {
+  margin-bottom: 0; }
