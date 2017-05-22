@@ -3,7 +3,7 @@
 Class Controller_AddCom Extends Controller_Base {
 	
 	//view name
-	public $view_name = "add";
+	public $view_name = "index";
 	
 	function __construct() {
 		//creating proper view class (view_name, controller prefix)
@@ -34,9 +34,6 @@ Class Controller_AddCom Extends Controller_Base {
 			header('Location: '._DS."errors"._DS."404"._DS."index?msg=Wrong call add comment action");
 			die('Wrong call add comment action!');
 		}
-
-		$contents['page_title'] = 'Add new article';
-		$this->view->show($contents);
 	}
 
 	//action delete comment

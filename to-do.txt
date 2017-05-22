@@ -12,7 +12,8 @@
 + named articles
 + errors footers/redo errors into warns/error pages
 + eng comments
-- disallow comments button
+- fix long wrong url
+? disallow comments button
 ? route rules
 ? show comment on main page
 ? password_hash

@@ -80,6 +80,7 @@ Abstract Class Model_Base {
 		//querry
 		try {
 		    $stmt = $this->db->prepare("INSERT INTO $this->table (id, $fields_q) VALUES(NULL, $data_q)");
+		    //echo "INSERT INTO $this->table (id, $fields_q) VALUES(NULL, $data_q)";
 		    //executing querry
 		    if($stmt->execute()) {
 		    	return $this->db->lastInsertId();

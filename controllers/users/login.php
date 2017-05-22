@@ -12,6 +12,7 @@ Class Controller_Login Extends Controller_Base {
 
 	//action show login form
 	function index() {
+		$contents['error'] = false;
 		$contents['page_title'] = 'Login page';
 		$contents['message'] = 'Write your login and password, please.';
 		$this->view->show($contents);
@@ -33,15 +34,18 @@ Class Controller_Login Extends Controller_Base {
 				    $_SESSION['admin'] = $model->admin;
 				    $_SESSION['user_id'] = $model->id;
 				    //go to last page
-				    header('Location: '.$_GET['last_url']);
+				    //echo $_SESSION['last_uri'];
+				    header('Location: '.$_SESSION['last_uri']);
 				} else {
 					//wrong password
+					$contents['error'] = true;
 					$contents['message'] = 'Wrong password.';
 					$contents['page_title'] = 'Login page';
 					$this->view->show($contents);
 				}	
 			} else {
 				//wrong login name
+				$contents['error'] = true;
 				$contents['message'] = 'No such login name.';
 				$contents['page_title'] = 'Login page';
 				$this->view->show($contents);

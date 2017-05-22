@@ -48,6 +48,11 @@ a:hover {
     width: 970px;
   }
 }
+@media (min-width: 900px) {
+  .container-narrow {
+    width: 40%;
+  }
+}
 
 .blog-hmenu {
   background-color: #428bca;
@@ -189,4 +194,20 @@ textarea.add-comment {
 }
 textarea.add-comment:focus {
   height: 10em;
+}
+
+.error404 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  text-align: center;
+ h1{
+  font-size: 8em;
+  color: #484DFFFF;
+ }
+}
+
+.error-description {
+  font-size: 1.2em;
+  font-style: italic;
+  text-align: center;
 }

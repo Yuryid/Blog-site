@@ -32,7 +32,7 @@
     <div class="form-group">
       <textarea class="form-control add-comment" name="text" id="text" placeholder="Start discussion..." required></textarea>
     </div>
-    <input type="hidden" name="art_id" value="<?php print $art->id;?>">
+    <input type="hidden" name="art_id" value="<?php print $art['id'];?>">
     <input type="submit" class="btn btn-primary" name="submit" value="Send">
   </form>
 

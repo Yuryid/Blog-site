@@ -9,6 +9,11 @@ if (!isset($contents['page_title'])) {
 } else {
   $page_title = $contents['page_title'];
 }
+//swap uris
+if(isset($_SESSION['now_uri'])) {
+  $_SESSION['last_uri'] = $_SESSION['now_uri'];
+}
+$_SESSION['now_uri'] = $_SERVER['REQUEST_URI'];
 //check login info
 if (!isset($_SESSION['login'])) {
   $login = false;
@@ -53,10 +58,10 @@ if (!isset($_SESSION['login'])) {
           </div>
         <!-- links for not logined users  -->
         <?php endif; ?>
-        <?php if (!$login): ?>
+        <?php if (!$login):?>
           <div class="navbar-right">
-            <a class="blog-nav-item" href="<?php print _DS . "users". _DS . "login" . _DS . "index?last_url={$_SERVER['REQUEST_URI']}"; ?>">Login</a> or 
-            <a class="blog-nav-item" href="<?php print _DS . "users". _DS . "register" . _DS . "index?last_url={$_SERVER['REQUEST_URI']}"; ?>">Register</a>
+            <a class="blog-nav-item" href="<?php print _DS . "users". _DS . "login" . _DS . "index"; ?>">Login</a> or 
+            <a class="blog-nav-item" href="<?php print _DS . "users". _DS . "register" . _DS . "index"; ?>">Register</a>
           </div>
         <?php endif; ?>
       </nav>

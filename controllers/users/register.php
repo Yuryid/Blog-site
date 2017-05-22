@@ -12,6 +12,7 @@ Class Controller_Register Extends Controller_Base {
 
 	//action show register form
 	function index() {
+		$contents['error'] = false;
 		$contents['page_title'] = 'Register new user';
 		$contents['message'] = 'Write your login and password, please.';
 		$this->view->show($contents);
@@ -21,7 +22,16 @@ Class Controller_Register Extends Controller_Base {
 	function check() {
 		$model = new Model_Users(); //model object 
 		//if POST ok then check data
-		if (!empty($_POST['name']) && !empty($_POST['pass'])) {
+		if (!empty($_POST['name']) && !empty($_POST['pass']) && !empty($_POST['sec_pass'])) {
+			//check pass
+			if($_POST['pass']!=$_POST['sec_pass']) {
+				//wrong password
+				$contents['error'] = true;
+				$contents['message'] = 'Password not equal to secondary password.';
+				$contents['page_title'] = 'Register new user';
+				$this->view->show($contents);
+				die;
+			}
 			//check login
 			$name = $_POST['name'];
 			$result = $model->findName($name);
@@ -41,15 +51,17 @@ Class Controller_Register Extends Controller_Base {
 				    $_SESSION['admin'] = 0;
 				    $_SESSION['user_id'] = $lastid;
 				    //go to main page
-				    header('Location: '.$_GET['last_url']);
+				    header('Location: '.$_SESSION['last_uri']);
 				} else {
 					//some error
+					$contents['error'] = true;
 					$contents['message'] = 'Unsuccesfull user creation, try again.';
 					$contents['page_title'] = 'Register new user';
 					$this->view->show($contents);
 				}
 			} else {
 				//wrong login name
+				$contents['error'] = true;
 				$contents['message'] = 'Such login name already exists.';
 				$contents['page_title'] = 'Register new user';
 				$this->view->show($contents);

@@ -20,7 +20,7 @@ class Model_comments extends Model_Base {
 	}
 
 	public function fieldsTable(){
-        return array('id', 'text', 'user_id', 'art_id', '$rate', 'datastamp');
+        return array('id', 'text', 'user_id', 'art_id', 'rate', 'datastamp');
     }
 	//list of comments from article id w user names
     public function getByArtId($art_id){

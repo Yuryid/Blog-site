@@ -6,7 +6,6 @@
 <main class="container">
   <!-- title. -->
   <div class="blog-header">
-    <!-- <img src="<?php print  '..'._DS.'img'._DS.'header-blog.jpg' ?>" alt=""> -->
     <h1 class="blog-title"> The test blog site</h1>
     <p class="lead blog-description">The example blog created with php, css, sass and Bootstrap</p>
   </div>
