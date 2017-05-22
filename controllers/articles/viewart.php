@@ -15,10 +15,11 @@ Class Controller_ViewArt Extends Controller_Base {
 		$arts = new Model_Articles();
 		if(isset($_GET['id'])){
 			//
-			$res = $arts->getRowById($_GET['id']);
+			$arts->id = $_GET['id'];
+			$res = $arts->getRow();
 			if(!empty($res)) {
 				//read article data
-				$contents['article'] = $arts;
+				$contents['article'] = $res;
 				$contents['page_title'] = $res['title'];
 				//read comments data
 				$coms = new Model_Comments();

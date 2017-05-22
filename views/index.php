@@ -12,7 +12,7 @@
   </div>
   <div class="row">
     <!-- list fo all articles ordered by date-->
-    <div class=" col-sm-12 articles-list">
+    <div class="col-sm-12 articles-list">
       <?php if (empty($contents)): ?>
         <!-- if no articles. -->
         No articles.
@@ -21,12 +21,14 @@
     	$articles = $contents['articles'];
     	foreach ($articles as $key => $art): ?>
       <article class="article-item">
-        <h2 class="article-title"><a href="<?php print _DS."articles"._DS."viewart"._DS."index?id={$art['id']}"; ?>"><?php print $art['title']; ?></a></h2>
+        <div class="container">
+          <h2 class="article-title"><a href="<?php print _DS."articles"._DS."viewart"._DS."index?id={$art['id']}"; ?>"><?php print $art['title']; ?></a></h2>
 
-        <div class="date-autor">
-          <?php print $art['datastamp']; ?> <span class="autor"><?php echo (!empty($art['name']))?$art['name']:"Deleted user"; ?></span>
+          <div class="date-autor">
+            <?php print date_create($art['datastamp'])->format('j F Y'); ?> <span class="autor"><?php echo (!empty($art['name']))?$art['name']:"Deleted user"; ?></span>
+          </div>
+          <p class="description"><?php print $art['shortdesc']; ?></p>
         </div>
-        <p class="description"><?php print $art['shortdesc']; ?></p>
         <div class="tools container-fluid">
           <a class="blog-nav-item" href="<?php print _DS."articles"._DS."viewart"._DS."index?id={$art['id']}"; ?>">Read more...</a>
           <!-- links only for admins -->
@@ -35,7 +37,6 @@
             <a class="blog-nav-item" href="<?php print _DS."articles"._DS."editart"._DS."index?id={$art['id']}"; ?>">Edit</a>
             <a class="blog-nav-item" href="<?php print _DS."articles"._DS."editart"._DS."delete?id={$art['id']}"; ?>">Delete</a>
           </div>
-
           <? endif; ?>
         </div>
       </article>

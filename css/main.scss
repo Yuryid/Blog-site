@@ -24,6 +24,18 @@ h6, .h6 {
   color: #333;
 }
 
+/*
+ * Form controls.
+ */
+input, textarea, label  {
+  font-size: 1.25em !important;
+}
+input[type=submit] {
+  font-size: 1.3em !important;
+}
+form {
+  margin-bottom: 1em;
+}
 a:hover {
   text-decoration: none;
 }
@@ -83,51 +95,65 @@ a:hover {
   color: #333;
 }
 
-.articles-list {
+.article-item {
   font-size: 1.4em;
   line-height: 1.5;
-}
-
-.article-item {
   margin-top: 1em;
   margin-bottom: 1em;
   background-color: white;
-  border-radius: 10px;
-  padding: 1em;
-  .article-title {
-    margin-bottom: 5px;
-    font-size: 2.5em;
-    a {
-      color: #333;
-    }
-    a:hover {
-      color: #428bca;
+  border-radius: 5px;
+  overflow: hidden;
+  padding-top: 1em;
+}
+.article-title {
+  margin-bottom: 5px;
+  font-size: 2.5em;
+  a {
+    color: #333;
+  }
+  a:hover {
+    color: #428bca;
 
-    }
   }
-  .date-autor {
-    margin-bottom: 1em;
-    color: #999;
-    .autor {
-      color: #4800FF;
-    }
+}
+.article-title-edit {
+  margin-bottom: 5px;
+  margin-top: 0.5em;
+  font-size: 2.5em;
+}
+
+.date-autor {
+  margin-bottom: 1em;
+  color: #999;
+}
+.description {
+  font-size: 1em;
+  font-style: italic;
+}
+.text {
+  margin-bottom: 0.5em;
+}
+
+.autor {
+  color: #4800FF;
+}
+.tools {
+  background-color: #428bca;
+  font-size: 0.75em;
+  .blog-nav-item {
+    padding: 0;
+    margin: 0 0.5em;
+    color: #cdddeb;
   }
-  .description {
-    font-size: 1em;
-    font-style: italic;
-  }
-  .tools {
-    background-color: #428bca;
-    border-radius: 5px;
-    font-size: 0.75em;
-    .blog-nav-item {
-      padding: 0;
-      margin: 0 0.5em;
-    }
-  }
+  .blog-nav-item:hover,
+  .blog-nav-item:focus {
+  color: #fff;
+  text-decoration: none;
+}
 }
 .blog-footer {
   padding: 0.5em 0;
+  //margin-top: 1em;
   color: #999;
   text-align: center;
   background-color: #f9f9f9;
@@ -136,4 +162,31 @@ a:hover {
 }
 .blog-footer p:last-child {
   margin-bottom: 0;
+}
+
+.comment-item {
+  font-size: 1.25em;
+  line-height: 1.5;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  background-color: #e5e5e5;
+  border-radius: 5px;
+  overflow: hidden;
+  .comment-header{
+    //margin-bottom: 5px;
+  }
+  .comment-text{
+    margin-bottom: 1em;
+    margin-top: 1em;
+  }
+}
+textarea.add-comment {
+  height: 3em;
+    -webkit-transition: height 0.4s ease-in-out;
+    -moz-transition: height 0.4s ease-in-out;
+    transition: height 0.4s ease-in-out;
+
+}
+textarea.add-comment:focus {
+  height: 10em;
 }

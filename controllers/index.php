@@ -14,7 +14,7 @@ Class Controller_Index Extends Controller_Base {
 		$model = new Model_Articles(); //model object
 		$articles = $model->getShortList(); //list w/o full text
 		$contents['articles'] = $articles;
-		$contents['page_title'] = 'Free blog';
+		$contents['page_title'] = 'Test blog';
 		$this->view->show($contents);
 	}
 	

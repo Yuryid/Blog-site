@@ -27,6 +27,11 @@ class Model_articles extends Model_Base {
     public function getShortList(){
     	return $this->makeRes("SELECT articles.id, title, shortdesc, user_id, articles.datastamp, allow_comments, users.name FROM articles LEFT JOIN users ON articles.user_id = users.id ORDER BY articles.datastamp DESC");
     }
-	
+    //one row w text and autor name
+	public function getRow() {
+		$res = $this->makeRes("SELECT articles.id, title, shortdesc, text, user_id, articles.datastamp, allow_comments, users.name FROM articles LEFT JOIN users ON articles.user_id = users.id WHERE articles.id=$this->id ORDER BY articles.datastamp DESC");
+		$this->fillData($res[0]);
+		return $res[0];
+	}
 }
 ?>
