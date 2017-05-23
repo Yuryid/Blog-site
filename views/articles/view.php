@@ -7,7 +7,7 @@
 <main class="container">
   <!-- output article -->
   <article class="article-item">
-    <div class="container">
+    <!-- <div class="container"> -->
       <h2 class="article-title"> <?php print $art['title']; ?> </h2>
       <div class="date-autor">
         <span class="timestamp"><?php print date_create($art['datastamp'])->format('j F Y');?></span> <span class="autor"><?php echo (!empty($art['name']))?$art['name']:"Deleted user"; ?></span>
@@ -15,7 +15,7 @@
       <div class="text">
         <?php print $art['text'];?>
       </div>
-    </div>
+    <!-- </div> -->
     <div class="tools container-fluid">
       <?php if($admin): ?> 
           <a class="blog-nav-item" href="<?php print _DS."articles"._DS."editart"._DS."index?id={$art['id']}"; ?>">Edit</a>

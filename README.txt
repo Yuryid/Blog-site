@@ -1,22 +1,9 @@
-Simple blog site.
-
 Installation:
 
 1. Create a MySQL database.
 
-2. Add a table:
+2. Execute querry from sql_start.sql file.
 
-```sql
-  CREATE TABLE IF NOT EXISTS `content` (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `title` varchar(255) NOT NULL,
-    `short_desc` text NOT NULL,
-    `full_desc` text NOT NULL,
-    `timestamp` int(11) NOT NULL,
-    PRIMARY KEY (`id`)
-  ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1;
-```
+4. Configure db_name, db_user and db_pass values in the config.php file.
 
-3. Copy /base/db.example.php file to /base/db.php file.
-
-4. Configure db_name, db_user and db_pass values only in the /base/db.php file.
+5. Login to site: admin pass: 123 or login: user pass: 12345

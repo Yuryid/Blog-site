@@ -35,10 +35,10 @@ if (!isset($_SESSION['login'])) {
   <title><?php print $page_title; ?></title>
   <!-- CSS files -->
   <!-- Bootstrap core CSS -->
-  <link href="<?php print  '..'._DS.'..'._DS.'css'._DS.'bootstrap.min.css' ?>" rel="stylesheet">
+  <link href="<?php print  CSS_PATH.'bootstrap.min.css' ?>" rel="stylesheet">
 
   <!-- Custom styles for this template -->
-  <link href="<?php print  '..'._DS.'..'._DS.'css'._DS.'main.css' ?>" rel="stylesheet">
+  <link href="<?php print  CSS_PATH.'main.css' ?>" rel="stylesheet">
 </head>
 <body>
   <!-- site menu -->
@@ -49,7 +49,7 @@ if (!isset($_SESSION['login'])) {
         <!-- add article for admins -->
         <?php if ($admin): ?>
           <a class="blog-nav-item" href="<?php print _DS . "articles" . _DS . "addart". _DS . "index"; ?>">Add article</a>
-        <?php endif; ?>
+        <?php endif;?>
         <!-- for logined users -->
         <?php if ($login): ?>
           <div class="navbar-right">
