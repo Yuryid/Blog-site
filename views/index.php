@@ -31,12 +31,12 @@
         <div class="tools container-fluid">
           <a class="blog-nav-item" href="<?php print _DS."articles"._DS."viewart"._DS."index?id={$art['id']}"; ?>">Read more...</a>
           <!-- links only for admins -->
-          <? if($admin): ?>
+          <?php if($admin): ?>
           <div class="pull-right">
             <a class="blog-nav-item" href="<?php print _DS."articles"._DS."editart"._DS."index?id={$art['id']}"; ?>">Edit</a>
             <a class="blog-nav-item" href="<?php print _DS."articles"._DS."editart"._DS."delete?id={$art['id']}"; ?>">Delete</a>
           </div>
-          <? endif; ?>
+          <?php endif; ?>
         </div>
       </article>
       <?php endforeach; 

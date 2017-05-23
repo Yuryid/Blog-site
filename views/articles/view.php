@@ -51,9 +51,9 @@
           </div>
             <!-- links only for admins -->
           <div class="tools container-fluid">
-            <? if($admin): ?>
+            <?php if($admin): ?>
               <a class="blog-nav-item" href="<?php print _DS.'comments'._DS.'addcom'._DS."delete?id={$com['id']}&last_url={$_SERVER['REQUEST_URI']}"; ?>">Delete comment</a>
-            <? endif; ?>
+            <?php endif; ?>
           </div>
         </div>
       <?php endforeach;
